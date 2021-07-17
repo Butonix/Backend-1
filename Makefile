@@ -28,6 +28,7 @@ create-admin:
 
 clean-db:
 	rm -rf db.sqlite3
+	rm -rf media
 
 clean-migrations:
 	rm -rf accounts/migrations
