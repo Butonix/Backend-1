@@ -8,6 +8,7 @@ class Country(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        ordering = ['-updated_at']
         verbose_name_plural = "Countries"
 
     def __str__(self):
@@ -17,7 +18,7 @@ class Country(models.Model):
 class Province(models.Model):
     name = models.CharField(max_length=255, unique=True)
     number = models.IntegerField(
-        unique=True, validators=[MaxValueValidator(7), MinValueValidator(1)]
+        unique=True, validators=[MaxValueValidator(100), MinValueValidator(1)]
     )
     country = models.ForeignKey(
         "Country", on_delete=models.CASCADE, related_name="provinces"
@@ -27,6 +28,10 @@ class Province(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['-updated_at']
+        verbose_name_plural = "Provinces"
 
 
 class District(models.Model):
@@ -50,6 +55,7 @@ class Municipality(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        ordering = ['-updated_at']
         verbose_name_plural = "Municipalities"
         unique_together = [["name", "district"]]
 
@@ -66,6 +72,7 @@ class VDC(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        ordering = ['-updated_at']
         verbose_name_plural = "VDCs"
         unique_together = [["name", "district"]]
 
@@ -83,6 +90,7 @@ class VDCWard(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        ordering = ['-updated_at']
         verbose_name_plural = "VDC Wards"
         unique_together = [["name", "vdc", "number"]]
 
@@ -102,6 +110,7 @@ class MunicipalityWard(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        ordering = ['-updated_at']
         verbose_name_plural = "Municipality Wards"
         unique_together = ["name", "municipality", "number"]
 
