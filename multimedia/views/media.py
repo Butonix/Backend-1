@@ -102,5 +102,5 @@ class VideoUrlViewSet(viewsets.ModelViewSet):
     filterset_fields = ["multimedia"]
     serializer_class = VideoUrlSerializer
 
-    def update(self, request, *args, **kwargs):
-        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    # def update(self, request, *args, **kwargs):
+    #     return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)

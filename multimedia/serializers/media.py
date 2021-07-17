@@ -16,6 +16,12 @@ class VideoUrlSerializer(serializers.ModelSerializer):
         validated_data["yt_info"] = yt_info
         return super().create(validated_data)
 
+    def update(self, instance, validated_data):
+        video_url = validated_data.get("video_url")
+        yt_info = get_youtube_video_data(video_url)
+        validated_data["yt_info"] = yt_info
+        return super().update(instance, validated_data)
+
 
 class VideoSerializer(serializers.ModelSerializer):
     @staticmethod
