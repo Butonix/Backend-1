@@ -222,7 +222,7 @@ MAX_SHOWCASE_GALLERY_IMAGES = 15
 # File extension rule
 ALLOWED_IMAGES_EXTENSIONS = ["png", "jpg", "jpeg", "gif", "bmp", "tiff", "JPG"]
 ALLOWED_AUDIO_EXTENSIONS = ["mp3", "wav"]
-ALLOWED_VIDEO_EXTENSIONS = ["webm", "mp4", "mpeg", "flv"]
+ALLOWED_VIDEO_EXTENSIONS = ["webm", "mp4", "mpeg", "flv", "mov", "MOV"]
 ALLOWED_FILES_EXTENSIONS = ["pdf", "docx", "txt", "zip"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
