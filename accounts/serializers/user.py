@@ -103,7 +103,9 @@ class UserWithProfileSerializer(serializers.ModelSerializer):
     @staticmethod
     def generate_url_for_media_resource(media_url):
         front = "http" if os.getenv("IS_SECURE") else "https"
-        return "{}://{}{}".format(front, os.getenv("BASE_URL"), media_url)
+        base_url = os.getenv("BASE_URL")
+        base_url = "sachchaikendranepal.org.np:8000" if base_url == '0.0.0.0:8000' else None
+        return "{}://{}{}".format(front, base_url, media_url)
 
     def get_active_profile_image(self, obj):
         profile = obj.profile
