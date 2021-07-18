@@ -68,9 +68,4 @@ class MultimediaWithMediaListSerializer(serializers.Serializer):
         sound = data.get("sound")
         if not videos and not images and not url and not sound:
             raise ValidationError("Please add at least a media for your multimedia.")
-        if videos:
-            if len(videos) > 0 and not images:
-                raise ValidationError(
-                    "Please add at least a image as thumbnail for your video resources."
-                )
         return data

@@ -40,10 +40,6 @@ class MultimediaViewSet(viewsets.ModelViewSet):
 class MultimediaWithMediaListView(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    parser_classes = (
-        MultiPartParser,
-        FormParser,
-    )
 
     def post(self, request):
         user = request.user
