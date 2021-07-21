@@ -17,13 +17,13 @@ def get_keys_from_ordered_dict(od):
 
 def generate_url_for_media_resources(serializer, param):
     for target in serializer.data:
-        front = "http" if os.getenv("IS_SECURE") else "https"
+        front = "https" if os.getenv("IS_SECURE") else "http"
         target[param] = "{}://{}{}".format(front, os.getenv("BASE_URL"), target[param])
     return serializer
 
 
 def generate_url_for_media_resource(serializer, param):
-    front = "http" if os.getenv("IS_SECURE") else "https"
+    front = "https" if os.getenv("IS_SECURE") else "http"
     serializer[param] = "{}://{}{}".format(
         front, os.getenv("BASE_URL"), serializer[param]
     )
