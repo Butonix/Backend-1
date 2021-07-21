@@ -15,7 +15,7 @@ class UserWithActiveProfileMediaSerializer(serializers.ModelSerializer):
     def generate_url_for_media_resource(media_url):
         front = "http" if os.getenv("IS_SECURE") else "https"
         base_url = os.getenv("BASE_URL")
-        base_url = "sachchaikendranepal.org.np:8000" if base_url == '0.0.0.0:8000' else None
+        base_url = "backend.sachchaikendranepal.org.np" if base_url == '0.0.0.0:8000' else None
         return "{}://{}{}".format(front, base_url, media_url)
 
     @staticmethod
