@@ -31,7 +31,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://sachchaikendranepal.org.np",
     "http://sachchaikendranepal.com",
     "https://sachchaikendranepal.org.np",
-
     "https://www.sachchaikendranepal.org.np",
 ]
 
