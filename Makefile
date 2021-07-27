@@ -31,14 +31,7 @@ clean-db:
 	rm -rf media
 
 clean-migrations:
-	rm -rf accounts/migrations
-	rm -rf branch/migrations
-	rm -rf multimedia/migrations
-	rm -rf article/migrations
-	rm -rf location/migrations
-	rm -rf event/migrations
-	rm -rf advertise/migrations
-	rm -rf utilities/migrations
+	rm -rf **/migrations
 
 load-fresh-migrations:
 	make clean-migrations
