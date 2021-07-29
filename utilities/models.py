@@ -16,7 +16,7 @@ def validate_only_number_of_instances(obj, count):
     model = obj.__class__
     if model.objects.count() >= count:
         raise ValidationError(
-            "Can only create {} {} instance".format(model.name, count)
+            "Can only create {} {} instance".format(model, count)
         )
 
 
@@ -92,7 +92,7 @@ class ShowcaseGalleryImage(models.Model):
     def clean(self):
         if self.image and self.image.size / 1000 > MAX_UPLOAD_IMAGE_SIZE:
             raise ValidationError("Image size exceeds max image upload size.")
-        validate_only_number_of_instances(self, 15)
+        validate_only_number_of_instances(self, 16)
 
     def delete(self, using=None, keep_parents=False):
         if self.image:
