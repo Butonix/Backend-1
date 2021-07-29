@@ -3,7 +3,7 @@ from rest_framework import serializers
 from utilities.models import (AboutUs, AboutUsImage, ContactUs, Feedback,
                               FeedbackFile, Service, ServiceImage,
                               ShowcaseGalleryImage, SliderImage)
-from utils.file import check_image_size_with_ext
+from utils.file import check_image_size_with_ext, check_file_size_with_ext
 from utils.global_serializer import UserWithActiveProfileMediaSerializer
 
 
