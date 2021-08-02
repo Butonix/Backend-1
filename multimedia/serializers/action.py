@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from multimedia.models import Bookmark, Comment, Love
-from multimedia.serializers.multimedia import MultimediaSerializer
 
 
 class LoveThinSerializer(serializers.ModelSerializer):
@@ -11,8 +10,6 @@ class LoveThinSerializer(serializers.ModelSerializer):
 
 
 class LoveSerializer(serializers.ModelSerializer):
-    multimedia = MultimediaSerializer()
-
     class Meta:
         model = Love
         fields = "__all__"
@@ -26,8 +23,6 @@ class BookmarkThinSerializer(serializers.ModelSerializer):
 
 
 class BookmarkSerializer(serializers.ModelSerializer):
-    multimedia = MultimediaSerializer()
-
     class Meta:
         model = Bookmark
         fields = "__all__"

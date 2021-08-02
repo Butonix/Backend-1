@@ -29,7 +29,7 @@ class Comment(models.Model):
 
 class Bookmark(models.Model):
     multimedia = models.ForeignKey(
-        "Multimedia", on_delete=models.CASCADE, related_name="multimedias"
+        "Multimedia", on_delete=models.CASCADE, related_name="bookmarks"
     )
     is_bookmarked = models.BooleanField(default=False)
     marker = models.ForeignKey(

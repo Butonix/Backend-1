@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from multimedia.models import Multimedia
+from multimedia.serializers.action import CommentSerializer, LoveThinSerializer, BookmarkThinSerializer
 from multimedia.serializers.media import (AudioSerializer, ImageSerializer,
                                           VideoSerializer, VideoUrlSerializer)
 from utils.global_serializer import UserWithActiveProfileMediaSerializer
@@ -36,6 +37,9 @@ class MultimediaSerializer(serializers.ModelSerializer):
     multimedia_sounds = AudioSerializer(many=True, read_only=True)
     multimedia_video_urls = VideoUrlSerializer(many=True, read_only=True)
     multimedia_audios = AudioSerializer(many=True, read_only=True)
+    bookmarks = BookmarkThinSerializer(many=True, read_only=True)
+    comments = CommentSerializer(many=True, read_only=True)
+    loved = LoveThinSerializer(many=True, read_only=True)
 
     uploaded_by = UserWithActiveProfileMediaSerializer()
 
