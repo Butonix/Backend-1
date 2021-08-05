@@ -26,8 +26,13 @@ message = (
 class SliderImageViewSet(viewsets.ModelViewSet):
     queryset = SliderImage.objects.all()
     serializer_class = SliderImageSerializer
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def create(self, request, *args, **kwargs):
         if SliderImage.objects.count() >= 1:
@@ -48,8 +53,13 @@ class SliderImageViewSet(viewsets.ModelViewSet):
 class ShowcaseGalleryViewSet(viewsets.ModelViewSet):
     queryset = ShowcaseGalleryImage.objects.all()
     serializer_class = ShowcaseGallerySerializer
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def create(self, request, *args, **kwargs):
         message = (
@@ -69,8 +79,13 @@ class ShowcaseGalleryViewSet(viewsets.ModelViewSet):
 
 class ServiceViewSet(viewsets.ModelViewSet):
     queryset = Service.objects.all()
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:
@@ -89,8 +104,13 @@ class ServiceViewSet(viewsets.ModelViewSet):
 class ServiceImageViewSet(viewsets.ModelViewSet):
     queryset = ServiceImage.objects.all()
     serializer_class = ServiceImageSerializer
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def destroy(self, request, *args, **kwargs):
         service_image = self.get_object()
@@ -100,8 +120,13 @@ class ServiceImageViewSet(viewsets.ModelViewSet):
 
 class AboutUsViewSet(viewsets.ModelViewSet):
     queryset = AboutUs.objects.all()
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:
@@ -124,8 +149,13 @@ class AboutUsViewSet(viewsets.ModelViewSet):
 class AboutUsImageViewSet(viewsets.ModelViewSet):
     queryset = AboutUsImage.objects.all()
     serializer_class = AboutUsImageSerializer
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def destroy(self, request, *args, **kwargs):
         about_us_image = self.get_object()
@@ -168,8 +198,13 @@ class FeedbackFileViewSet(viewsets.ModelViewSet):
 
 class ContactUsViewSet(viewsets.ModelViewSet):
     queryset = ContactUs.objects.all()
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:
