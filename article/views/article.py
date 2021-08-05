@@ -43,9 +43,14 @@ class ArticleWithImageListView(APIView):
 
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
     filterset_fields = ["is_approved", "created_by", "completed_writing", "is_pinned"]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:

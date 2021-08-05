@@ -16,9 +16,14 @@ from utils.helper import get_youtube_video_data
 class MultimediaViewSet(viewsets.ModelViewSet):
     queryset = Multimedia.objects.all()
     serializer_class = MultimediaSerializer
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
     filterset_fields = ["is_approved"]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def get_serializer_class(self):
         if self.action == "create" or self.action == "update":

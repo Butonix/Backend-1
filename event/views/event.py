@@ -17,11 +17,16 @@ from event.sub_models.event_media import EventPhoto, EventVideo
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all().order_by("-created_at")
     serializer_class = EventSerializer
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
     filter_backends = [SearchFilter, DjangoFilterBackend]
     filterset_fields = ["branch", "is_approved"]
     search_fields = ["title", "description", "created_by__username"]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def get_serializer_class(self):
         if self.action not in ["list", "retrieve"]:
