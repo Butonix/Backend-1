@@ -17,7 +17,7 @@ class EventCommentViewSet(viewsets.ModelViewSet):
     filterset_fields = ["event"]
 
     def get_permissions(self):
-        if self.action in ["list", "retrieve"]:
+        if self.action in ["list", "retrieve", "create"]:
             permission_classes = []
         else:
             permission_classes = [IsAuthenticated]
