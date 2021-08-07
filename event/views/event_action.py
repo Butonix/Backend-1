@@ -14,9 +14,14 @@ from event.sub_models.event_action import EventComment, EventInterest
 
 class EventCommentViewSet(viewsets.ModelViewSet):
     queryset = EventComment.objects.all()
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
     filterset_fields = ["event"]
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            permission_classes = []
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:
