@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AnonymousUser
 from rest_framework import serializers
 
 from multimedia.models import Bookmark, Comment, Love
@@ -42,5 +43,8 @@ class CommentPostSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def create(self, validated_data):
-        validated_data["writer"] = self.context["request"].user
+        if isinstance(self.context["request"].user, AnonymousUser):
+            validated_data["writer"] = None
+        else:
+            validated_data["writer"] = self.context["request"].user
         return super().create(validated_data)

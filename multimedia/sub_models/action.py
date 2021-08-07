@@ -11,6 +11,8 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         related_name="my_comments",
         editable=False,
+        null=True,
+        blank=True
     )
     comment = models.TextField()
     reply_to = models.ForeignKey(

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AnonymousUser
 from rest_framework import serializers
 
 from event.sub_models.event_action import EventComment, EventInterest
@@ -16,7 +17,10 @@ class EventCommentPostSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def create(self, validated_data):
-        validated_data["writer"] = self.context["request"].user
+        if isinstance(self.context["request"].user, AnonymousUser):
+            validated_data["writer"] = None
+        else:
+            validated_data["writer"] = self.context["request"].user
         return EventComment.objects.create(**validated_data)
 
 

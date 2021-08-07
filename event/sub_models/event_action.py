@@ -38,6 +38,8 @@ class EventComment(models.Model):
         on_delete=models.CASCADE,
         related_name="follower_event_comments",
         editable=False,
+        null=True,
+        blank=True
     )
     comment = models.CharField(max_length=1024)
     created_at = models.DateTimeField(auto_now_add=True)
