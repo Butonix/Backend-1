@@ -18,3 +18,10 @@ EVENT_TYPE = (
     ("General Meeting", "General Meeting"),
     ("Board Meeting", "Board Meeting"),
 )
+
+MULTIMEDIA_TYPE = (
+    ("satsang", "Satsang"),
+    ("prayer", "Prayer"),
+    ("testimonial", "Testimonial"),
+    ("bhajan", "Bhajan")
+)
