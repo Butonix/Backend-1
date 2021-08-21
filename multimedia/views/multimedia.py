@@ -1,6 +1,5 @@
 from rest_framework import status, viewsets
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -16,7 +15,7 @@ from utils.helper import get_youtube_video_data
 class MultimediaViewSet(viewsets.ModelViewSet):
     queryset = Multimedia.objects.all()
     serializer_class = MultimediaSerializer
-    filterset_fields = ["is_approved"]
+    filterset_fields = ["is_approved", "type"]
 
     def get_permissions(self):
         if self.action in ["list", "retrieve"]:
