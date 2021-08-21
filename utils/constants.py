@@ -23,5 +23,6 @@ MULTIMEDIA_TYPE = (
     ("satsang", "Satsang"),
     ("prayer", "Prayer"),
     ("testimonial", "Testimonial"),
-    ("bhajan", "Bhajan")
+    ("bhajan", "Bhajan"),
+    ("bachan", "Bachan")
 )
