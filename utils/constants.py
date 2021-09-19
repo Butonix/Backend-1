@@ -26,3 +26,9 @@ MULTIMEDIA_TYPE = (
     ("bhajan", "Bhajan"),
     ("bachan", "Bachan")
 )
+
+FEEDBACK_TYPES = (
+    (0, 'Custom Detail'),
+    (1, 'Anonymously'),
+    (2, 'Login')
+)

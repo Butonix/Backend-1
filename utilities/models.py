@@ -4,12 +4,14 @@ import random
 from django.contrib.auth import get_user_model
 from django.core.validators import FileExtensionValidator
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 from rest_framework.exceptions import ValidationError
 
 from backend.settings import (
     ALLOWED_IMAGES_EXTENSIONS,
     ALLOWED_VIDEO_EXTENSIONS, MAX_UPLOAD_IMAGE_SIZE, ALLOWED_FILES_EXTENSIONS
 )
+from utils.constants import FEEDBACK_TYPES
 
 
 def validate_only_number_of_instances(obj, count):
@@ -176,6 +178,16 @@ class AboutUsImage(models.Model):
 
 
 class Feedback(models.Model):
+    writer_name = models.CharField(max_length=64, null=True, blank=True)
+    writer_contact = PhoneNumberField(
+        null=True,
+        blank=True,
+        help_text="Should be a registered Nepal phone number.",
+    )
+    writer_email = models.EmailField(null=True, blank=True)
+
+    type = models.CharField(choices=FEEDBACK_TYPES, max_length=13)
+
     subject = models.CharField(max_length=244, unique=True)
     message = models.TextField(max_length=1024, unique=True)
     writer = models.ForeignKey(
@@ -183,6 +195,8 @@ class Feedback(models.Model):
         on_delete=models.CASCADE,
         related_name="my_feedbacks",
         editable=False,
+        null=True,
+        blank=True
     )
     seen = models.BooleanField(default=False, editable=False)
     reply_to = models.ForeignKey(
