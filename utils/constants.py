@@ -28,7 +28,7 @@ MULTIMEDIA_TYPE = (
 )
 
 FEEDBACK_TYPES = (
-    (0, 'Custom Detail'),
-    (1, 'Anonymously'),
-    (2, 'Login')
+    ('0', 'Custom Detail'),
+    ('1', 'Anonymously'),
+    ('2', 'Login')
 )
