@@ -194,7 +194,6 @@ class Feedback(models.Model):
         get_user_model(),
         on_delete=models.CASCADE,
         related_name="my_feedbacks",
-        editable=False,
         null=True,
         blank=True
     )
